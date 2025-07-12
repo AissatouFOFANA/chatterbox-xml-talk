@@ -1,7 +1,8 @@
-
 import React from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import { fr } from 'date-fns/locale';
+import { StatusIndicator } from './StatusIndicator';
+import { NotificationBadge } from './NotificationBadge';
 
 interface Message {
   id: string;
@@ -57,9 +58,10 @@ export const ConversationList: React.FC<ConversationListProps> = ({
               <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
                 {conversation.name.charAt(0).toUpperCase()}
               </div>
-              {conversation.isOnline && (
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white"></div>
-              )}
+              <StatusIndicator 
+                isOnline={conversation.isOnline} 
+                className="absolute -bottom-1 -right-1" 
+              />
             </div>
 
             {/* Content */}
@@ -83,11 +85,7 @@ export const ConversationList: React.FC<ConversationListProps> = ({
                   {conversation.lastMessage?.content || 'Nouvelle conversation'}
                 </p>
                 
-                {conversation.unreadCount > 0 && (
-                  <span className="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-blue-500 rounded-full">
-                    {conversation.unreadCount}
-                  </span>
-                )}
+                <NotificationBadge count={conversation.unreadCount} />
               </div>
             </div>
           </div>
