@@ -65,7 +65,7 @@ const ChatApp = () => {
       lastMessage: {
         id: '1',
         senderId: '2',
-        content: 'Hello Leo! I'm happy to tell you that Acme Air',
+        content: 'Hello Leo! I\'m happy to tell you that Acme Air',
         timestamp: new Date(),
         type: 'text',
         delivered: true,
@@ -83,7 +83,7 @@ const ChatApp = () => {
       lastMessage: {
         id: '2',
         senderId: '3',
-        content: 'Thank you! I'm reporting this internally',
+        content: 'Thank you! I\'m reporting this internally',
         timestamp: new Date(Date.now() - 3600000),
         type: 'text',
         delivered: true,
